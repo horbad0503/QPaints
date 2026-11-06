@@ -14,10 +14,15 @@ export async function api<T = unknown>(
   path: string,
   { body, ...init }: ApiOptions = {}
 ): Promise<T> {
-  // Prefix with base path so requests go to /qualitas/api/php/...
-  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
-  const url = `${basePath}/api/php/${path.replace(/^\/+/, "")}`;
-  
+  const cleanPath = path.replace(/^\/+/, "");
+
+  // In production: call cPanel directly (so the browser sends its session cookie)
+  // In local dev: use the Next.js rewrite (which proxies to XAMPP)
+  const apiBase = process.env.NEXT_PUBLIC_API_URL;
+  const url = apiBase
+    ? `${apiBase}/${cleanPath}`
+    : `/api/php/${cleanPath}`;
+
   const res = await fetch(url, {
     ...init,
     credentials: "include",
