@@ -1,0 +1,14 @@
+{
+    "name": "ayost/backend",
+    "authors": [
+        {
+            "name": "horbad0503",
+            "email": "horbad0503@gmail.com"
+        }
+    ],
+    "require": {
+        "phpmailer/phpmailer": "^7.1",
+        "facebook/graph-sdk": "^5.1",
+        "google/apiclient": "^2.20"
+    }
+}

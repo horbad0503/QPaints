@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand:          #1B50C1;
+  --color-brand-dark:     #0B4DC4;
+  --color-brand-darker:   #0B1F4A;
+  --color-brand-yellow:   #FFBE00;
+  --color-brand-gold:     #FFD95B;
+  --color-brand-cream:    #FFF7E4;
+  --color-brand-ink:      #1E1E1E;
+
+  --color-success:        #00B894;
+  --color-danger:         #D63031;
+  --color-warning:        #FDCB6E;
+  --color-accent:         #FD79A8;
+
+  --font-nexa: var(--font-nexa-src), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-nexa-src), ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-cta:       0 4px 15px rgba(255, 190, 0, 0.3);
+  --shadow-cta-hover: 0 8px 25px rgba(255, 190, 0, 0.4);
+
+  --animate-marquee: marquee 30s linear infinite;
+}
+
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Logo Animation Sequence */
+@keyframes logoRotateScale {
+  0% { transform: rotate(0deg) scale(1); }
+  18.18% { transform: rotate(360deg) scale(1); }
+  27.27% { transform: rotate(360deg) scale(1); }
+  31.81% { transform: rotate(360deg) scale(1.2); }
+  36.36% { transform: rotate(360deg) scale(1); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+@keyframes hiddenPathSlide {
+  0%, 18.18% { transform: translateY(100%); opacity: 0; visibility: hidden; }
+  27.27%, 90.9% { transform: translateY(0); opacity: 1; visibility: visible; }
+  100% { transform: translateY(100%); opacity: 0; visibility: hidden; }
+}
+@keyframes svg2Slide {
+  0%, 36.36% { transform: translateY(100%); opacity: 0; visibility: hidden; }
+  45.45%, 81.81% { transform: translateY(0); opacity: 1; visibility: visible; }
+  90.9%, 100% { transform: translateY(100%); opacity: 0; visibility: hidden; }
+}
+
+/* Header Search Bar Animation */
+@keyframes slideDownSearch {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Button Bounce Animation */
+@keyframes bounceHover {
+  0%, 100% { transform: translateY(-2px); }
+  50% { transform: translateY(-6px); }
+}
+
+@utility container-shop {
+  width: 100%;
+  max-width: 1400px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  @media (min-width: 768px) {
+    padding-inline: 2rem;
+  }
+}
+
+@utility bg-brand-cta {
+  background-image: linear-gradient(135deg, #FFBE00 0%, #FFD95B 100%);
+}
+
+@utility bg-brand-cta-hover {
+  background-image: linear-gradient(135deg, #FFD95B 0%, #FFBE00 100%);
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-white font-nexa text-brand-ink antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-nexa font-black tracking-tight;
+  }
+}
+/* About Page Core Values Animation */
+@keyframes slideUpValues {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.animate-slide-up-values {
+  animation: slideUpValues 0.5s ease-in-out forwards;
+}

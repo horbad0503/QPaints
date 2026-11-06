@@ -1,0 +1,8 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    # Do not proxy PHP files, let Apache handle them
+    RewriteCond %{REQUEST_URI} !^/qualitas/backend/
+    
+    # Proxy all other requests to the Node.js server
+    RewriteRule ^(.*)$ http://127.0.0.1:3000/qualitas/$1 [P,L]
+</IfModule>

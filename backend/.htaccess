@@ -1,0 +1,8 @@
+RewriteEngine On
+
+# Skip real files and directories
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# /api/anything -> /api/anything.php
+RewriteRule ^api/(.*)$ api/\.php [QSA,L]

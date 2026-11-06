@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+frontend/node_modules/
+backend/vendor/
+
+# Next.js build output
+.next/
+frontend/.next/
+out/
+frontend/out/
+frontend/.vercel/
+
+# Environment files
+.env
+.env.local
+.env.production
+frontend/.env.local
+
+# PHP Secrets (REAL — DO NOT COMMIT)
+backend/config/secrets.php
+backend/config/secrets.*.php
+!backend/config/secrets.example.php
+backend/helpers/config.php
+backend/**/config.php.bak
+
+# Stray duplicate project (old QPaints)
+frontend/public/qpaints/
+
+# Archives
+*.zip
+
+# System
+.DS_Store
+Thumbs.db
+*.log
