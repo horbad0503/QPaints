@@ -38,11 +38,17 @@ export default function RetailerLoginPage() {
       <p className="mt-5 md:mt-8 text-center text-[10px] md:text-sm text-gray-500">Sign up with Google or your social media account</p>
       
       <div className="mt-3 md:mt-4 flex gap-2 md:gap-3">
-        <a href="/api/php/auth/google_login" className="flex flex-1 items-center justify-center gap-1.5 md:gap-2 rounded border border-gray-300 py-2 text-[11px] md:text-sm font-bold text-gray-700 transition hover:bg-gray-50">
-          <img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/icons/icons8-google-48.png`} className="h-3.5 w-3.5 md:h-4 md:w-4" /> Google
+        <a 
+          href={`${process.env.NEXT_PUBLIC_API_URL || ""}/auth/google_login`} 
+          className="..."
+        >
+          Google
         </a>
-        <a href="/api/php/auth/facebook_login" className="flex flex-1 items-center justify-center gap-1.5 md:gap-2 rounded border border-gray-300 py-2 text-[11px] md:text-sm font-bold text-gray-700 transition hover:bg-gray-50">
-          <img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/icons/icons8-facebook-48.png`} className="h-3.5 w-3.5 md:h-4 md:w-4" /> Facebook
+        <a 
+          href={`${process.env.NEXT_PUBLIC_API_URL || ""}/auth/facebook_login`} 
+          className="..."
+        >
+          Facebook
         </a>
         <button className="flex flex-1 items-center justify-center gap-1.5 md:gap-2 rounded border border-gray-300 py-2 text-[11px] md:text-sm font-bold text-gray-700 transition hover:bg-gray-50 opacity-50 cursor-not-allowed">
           <img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/icons/icons8-linkedin-48.png`} className="h-3.5 w-3.5 md:h-4 md:w-4" /> LinkedIn
