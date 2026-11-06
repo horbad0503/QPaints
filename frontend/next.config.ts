@@ -3,16 +3,15 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   basePath: process.env.NEXT_PUBLIC_BASE_PATH || "",
   images: {
-    // Allow images from your cPanel domain
     remotePatterns: [{ protocol: "https", hostname: "www.ugwuuvuoma.com" }],
   },
   async rewrites() {
+    // Only used locally (production calls API directly via NEXT_PUBLIC_API_URL)
+    if (process.env.NEXT_PUBLIC_API_URL) return [];
     return [
       {
         source: "/api/php/:path*",
-        // 1. Point to your cPanel folder
-        // 2. Append .php because the file is a PHP script
-        destination: "https://www.ugwuuvuoma.com/qualitas-api/api/:path*.php",
+        destination: "http://localhost/qualitas-rebuild/backend/api/:path*.php",
       },
     ];
   },
