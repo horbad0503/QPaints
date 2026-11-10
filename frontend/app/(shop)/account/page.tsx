@@ -7,7 +7,7 @@ import { api } from "@/lib/api";
 import { useSession } from "@/lib/auth";
 import toast from "react-hot-toast";
 import { User, Lock, Package, LogOut, Check, MapPin, AlignLeft, Camera, Bell } from "lucide-react";
-import { formatNaira } from "@/lib/format";
+import { formatNaira, aaset } from "@/lib/format";
 
 export default function AccountPage() {
   const router = useRouter();
@@ -172,7 +172,7 @@ export default function AccountPage() {
                       {isUploading ? (
                         <div className="animate-pulse flex h-full w-full items-center justify-center bg-gray-300 text-gray-500 text-sm">...</div>
                       ) : profile.profile_picture ? (
-                        <img src={profile.profile_picture} alt="Avatar" className="h-full w-full object-cover" />
+                        <img src={asset(profile.profile_picture)} alt="Avatar" className="h-full w-full object-cover" />
                       ) : (
                         profile.full_name ? profile.full_name.charAt(0).toUpperCase() : "U"
                       )}
