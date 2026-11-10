@@ -5,7 +5,7 @@ import { X, Search, ChevronDown, User, LogOut, Heart, Package } from "lucide-rea
 import { useState } from "react";
 import type { Session } from "@/lib/auth";
 import { useSession } from "@/lib/auth";
-import { getInitials } from "@/lib/format";
+import { getInitials, asset } from "@/lib/format";
 
 const toolsLinks = [
   { href: "/estimation-calculator", label: "Estimation Calculator" },
@@ -133,7 +133,7 @@ export function MobileNav({
                 <div className="flex items-center gap-3 rounded-xl bg-gray-50 p-3">
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 text-sm font-bold text-white shadow-sm">
                     {session.user.profile_picture ? (
-                      <img src={session.user.profile_picture} alt={session.user.username} className="h-full w-full object-cover" />
+                      <img src={asset(session.user.profile_picture)} alt={session.user.username} className="h-full w-full object-cover" />
                     ) : (
                       getInitials(session.user.fullName || session.user.username)
                     )}

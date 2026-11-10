@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useSession } from "@/lib/auth";
-import { getInitials } from "@/lib/format";
+import { getInitials, asset } from "@/lib/format";
 import { useState } from "react";
 import { ChevronDown, Heart, LogOut, Package, User, Bell } from "lucide-react";
 
@@ -33,7 +33,7 @@ export function UserDropdown({
         <div className="relative">
           <div className="flex h-7 w-7 md:h-8 md:w-8 shrink-0 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 text-xs md:text-sm font-bold text-white">
             {user.profile_picture ? (
-              <img src={user.profile_picture} alt={user.username} className="h-full w-full object-cover" />
+              <img src={asset(user.profile_picture)} alt={user.username} className="h-full w-full object-cover" />
             ) : (
               initials
             )}
@@ -56,7 +56,7 @@ export function UserDropdown({
             <div className="flex items-center gap-3 border-b border-gray-100 p-4">
               <div className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 text-base font-bold text-white">
                 {user.profile_picture ? (
-                  <img src={user.profile_picture} alt={user.username} className="h-full w-full object-cover" />
+                  <img src={asset(user.profile_picture)} alt={user.username} className="h-full w-full object-cover" />
                 ) : (
                   initials
                 )}
