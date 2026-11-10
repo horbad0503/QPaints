@@ -168,15 +168,19 @@ export default function AccountPage() {
                   
                   {/* Avatar Section */}
                   <div className="flex flex-col md:flex-row items-center gap-6 border-b border-gray-100 pb-8">
-                    <div className="relative h-24 w-24 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-3xl font-bold text-white shadow-md overflow-hidden">
-                      {isUploading ? (
-                        <div className="animate-pulse flex h-full w-full items-center justify-center bg-gray-300 text-gray-500 text-sm">...</div>
-                      ) : profile.profile_picture ? (
-                        <img src={asset(profile.profile_picture)} alt="Avatar" className="h-full w-full object-cover" />
-                      ) : (
-                        profile.full_name ? profile.full_name.charAt(0).toUpperCase() : "U"
-                      )}
-                      
+                    <div className="relative">
+                      {/* Circular avatar (with overflow-hidden for the image) */}
+                      <div className="h-24 w-24 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-3xl font-bold text-white shadow-md overflow-hidden">
+                        {isUploading ? (
+                          <div className="animate-pulse flex h-full w-full items-center justify-center bg-gray-300 text-gray-500 text-sm">...</div>
+                        ) : profile.profile_picture ? (
+                          <img src={asset(profile.profile_picture)} alt="Avatar" className="h-full w-full object-cover" />
+                        ) : (
+                          profile.full_name ? profile.full_name.charAt(0).toUpperCase() : "U"
+                        )}
+                      </div>
+
+                      {/* Hidden file input */}
                       <input 
                         type="file" 
                         ref={fileInputRef} 
@@ -184,15 +188,19 @@ export default function AccountPage() {
                         accept="image/jpeg, image/png, image/webp" 
                         className="hidden" 
                       />
+
+                      {/* Camera button — OUTSIDE overflow-hidden so it isn't clipped */}
                       <button 
                         type="button" 
                         onClick={() => fileInputRef.current?.click()} 
-                        className="absolute bottom-0 right-0 bg-white p-1.5 rounded-full shadow-md text-gray-600 hover:text-brand z-10"
+                        className="absolute bottom-1 right-1 z-20 bg-white p-2 rounded-full shadow-lg border border-gray-100 text-gray-600 hover:text-brand hover:scale-110 transition-transform"
                         disabled={isUploading}
+                        aria-label="Upload new photo"
                       >
-                        <Camera size={16} />
+                        <Camera size={14} />
                       </button>
                     </div>
+
                     <div className="text-center md:text-left">
                       <h2 className="text-lg font-bold text-black">Upload new photo</h2>
                       <p className="text-xs text-gray-500 mt-1">At least 800x800 px recommended.<br/>JPG or PNG is allowed</p>
