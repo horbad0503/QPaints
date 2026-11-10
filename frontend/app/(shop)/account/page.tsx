@@ -7,7 +7,7 @@ import { api } from "@/lib/api";
 import { useSession } from "@/lib/auth";
 import toast from "react-hot-toast";
 import { User, Lock, Package, LogOut, Check, MapPin, AlignLeft, Camera, Bell } from "lucide-react";
-import { formatNaira, aaset } from "@/lib/format";
+import { formatNaira, asset } from "@/lib/format";
 
 export default function AccountPage() {
   const router = useRouter();
