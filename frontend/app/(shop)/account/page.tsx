@@ -94,14 +94,27 @@ export default function AccountPage() {
     formData.append("avatar", file);
     setIsUploading(true);
 
+    // 1. Determine the correct API URL (cPanel in prod, rewrite in local)
+    const apiBase = process.env.NEXT_PUBLIC_API_URL;
+    const url = apiBase ? `${apiBase}/auth/upload_avatar` : `/api/php/auth/upload_avatar`;
+
     try {
-      const res = await fetch("/api/php/auth/upload_avatar", {
+      const res = await fetch(url, {
         method: "POST",
         body: formData,
         credentials: "include",
       });
 
-      const data = await res.json();
+      // 2. Safely parse the response (prevents the '<' error)
+      const text = await res.text();
+      let data;
+      try {
+        data = JSON.parse(text);
+      } catch (err) {
+        console.error("Server returned HTML:", text);
+        throw new Error(`Server Error: ${res.status}`);
+      }
+
       if (!res.ok) throw new Error(data.error || "Upload failed");
 
       setProfile(prev => ({ ...prev, profile_picture: data.profile_picture }));
